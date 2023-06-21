@@ -28,7 +28,7 @@ function App() {
   const [status, setStatus] = useState<"initial" | "playing" | "finished">("initial");
   const [time, setTime] = useState<number>(0);
   const [score, setScore] = useState<number>(0);
-  const [color, setColor] = useState<null | Color>(null);
+  const [correctColor, setCorrectColor] = useState<null | Color>(null);
   const [wrongColor, setWrongColor] = useState<null | Color>(null);
 
   function handlePlay() {
@@ -36,9 +36,9 @@ function App() {
     setTime(0);
     setScore(0);
 
-    const [color, wrongColor] = COLORS.slice().sort(() => Math.random() - 0.5);
+    const [correctColor, wrongColor] = COLORS.slice().sort(() => Math.random() - 0.5);
 
-    setColor(color);
+    setCorrectColor(correctColor);
     setWrongColor(wrongColor);
   }
 
@@ -64,15 +64,15 @@ function App() {
       </header>
       {status === "playing" && (
         <section>
-          <span style={{ textTransform: "capitalize", color: wrongColor?.color }}>{color?.name}</span>
+          <span style={{ textTransform: "capitalize", color: wrongColor?.color }}>{correctColor?.name}</span>
         </section>
       )}
       <footer>
         {status === "initial" && <button onClick={handlePlay}>Jugar</button>}
         {status === "finished" && <button onClick={() => setStatus("initial")}>Reiniciar</button>}
-        {status === "playing" && color && wrongColor && (
+        {status === "playing" && correctColor && wrongColor && (
           <>
-            <button onClick={() => handleColorClick(color)} style={{ width: 128, height: 128, backgroundColor: color.color }} />
+            <button onClick={() => handleColorClick(correctColor)} style={{ width: 128, height: 128, backgroundColor: correctColor.color }} />
             <button onClick={() => handleColorClick(wrongColor)} style={{ width: 128, height: 128, backgroundColor: wrongColor.color }} />
           </>)}
       </footer>
