@@ -18,6 +18,11 @@ const COLORS: Color[] = [
     correct: false,
   },
   {
+    name: "rosa",
+    color: "#f09",
+    correct: false,
+  },
+  {
     name: "azul",
     color: "#00f",
     correct: false,
@@ -80,7 +85,7 @@ function App() {
   }, [status]);
 
   return (
-    <main>
+    <main style={{backgroundColor: status === "playing" ? gameColors[1].color : "inherit"}}>
       <header style={{backgroundColor: "#333"}}>
         <h1>{score} puntos</h1>
         <h1>{time} segundos</h1>
@@ -93,16 +98,16 @@ function App() {
         </section>
       )}
       <footer>
-        {status === "initial" && <button onClick={handlePlay}>Jugar</button>}
+        {status === "initial" && <button onClick={handlePlay} style={{width: 128, height: 64, backgroundColor: "#333"}}>Jugar</button>}
         {status === "finished" && <button onClick={() => setStatus("initial")}>Reiniciar</button>}
         {status === "playing" && (
           <>
             <button
-              style={{width: 128, height: 128, backgroundColor: gameColors[0].color}}
+              style={{border: `4px solid ${gameColors[1].color}`, width: 128, height: 128, backgroundColor: gameColors[0].color}}
               onClick={() => handleColorClick(gameColors[0])}
             />
             <button
-              style={{width: 128, height: 128, backgroundColor: gameColors[1].color}}
+              style={{border: `4px solid ${gameColors[0].color}`, width: 128, height: 128, backgroundColor: gameColors[1].color}}
               onClick={() => handleColorClick(gameColors[1])}
             />
           </>
