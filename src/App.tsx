@@ -103,16 +103,48 @@ function App() {
         </section>
       )}
       <footer>
-        {status === "initial" && <button onClick={handlePlay} style={{width: 128, height: 64, backgroundColor: "#333"}}>Jugar</button>}
-        {status === "finished" && <button onClick={() => setStatus("initial")} style={{width: 128, height: 64, backgroundColor: "#333"}}>Reiniciar</button>}
+        {status === "initial" && (
+          <button
+            style={{
+              width: 128,
+              height: 64,
+              backgroundColor: "#333",
+            }}
+            onClick={handlePlay}
+          >
+            Jugar
+          </button>
+        )}
+        {status === "finished" && (
+          <button
+            style={{
+              width: 128,
+              height: 64,
+              backgroundColor: "#333",
+            }}
+            onClick={() => setStatus("initial")}
+          >
+            Reiniciar
+          </button>
+        )}
         {status === "playing" && (
           <>
             <button
-              style={{border: `4px solid ${gameColors[1].color}`, width: 128, height: 128, backgroundColor: gameColors[0].color}}
+              style={{
+                border: `4px solid ${gameColors[1].color}`,
+                width: 128,
+                height: 128,
+                backgroundColor: gameColors[0].color,
+              }}
               onClick={() => handleColorClick(gameColors[0])}
             />
             <button
-              style={{border: `4px solid ${gameColors[0].color}`, width: 128, height: 128, backgroundColor: gameColors[1].color}}
+              style={{
+                border: `4px solid ${gameColors[0].color}`,
+                width: 128,
+                height: 128,
+                backgroundColor: gameColors[1].color,
+              }}
               onClick={() => handleColorClick(gameColors[1])}
             />
           </>
