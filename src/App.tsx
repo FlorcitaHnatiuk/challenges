@@ -61,7 +61,7 @@ function App() {
       if (score === 9) {
         setStatus("finished");
       } else {
-        const [correctColor, wrongColor] = COLORS.slice().sort();
+        const [correctColor, wrongColor] = COLORS.slice().sort(() => Math.random() - 0.5);
 
         setGameColors(
           [{...correctColor, correct: true}, wrongColor].sort(() => Math.random() - 0.5),
