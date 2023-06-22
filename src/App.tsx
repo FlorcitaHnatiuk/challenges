@@ -9,27 +9,32 @@ type Color = {
 const COLORS: Color[] = [
   {
     name: "rojo",
-    color: "#f00",
+    color: "#D7263D",
     correct: false,
   },
   {
     name: "verde",
-    color: "#0f0",
+    color: "#1B998B",
     correct: false,
   },
   {
     name: "rosa",
-    color: "#f09",
+    color: "#D96CB8",
+    correct: false,
+  },
+  {
+    name: "naranja",
+    color: "#F46036",
     correct: false,
   },
   {
     name: "azul",
-    color: "#00f",
+    color: "#2E294E",
     correct: false,
   },
   {
     name: "amarillo",
-    color: "#ff0",
+    color: "#D9D36C",
     correct: false,
   },
 ];
@@ -99,7 +104,7 @@ function App() {
       )}
       <footer>
         {status === "initial" && <button onClick={handlePlay} style={{width: 128, height: 64, backgroundColor: "#333"}}>Jugar</button>}
-        {status === "finished" && <button onClick={() => setStatus("initial")}>Reiniciar</button>}
+        {status === "finished" && <button onClick={() => setStatus("initial")} style={{width: 128, height: 64, backgroundColor: "#333"}}>Reiniciar</button>}
         {status === "playing" && (
           <>
             <button
