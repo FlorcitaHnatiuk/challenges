@@ -53,9 +53,15 @@ function App() {
     if (clickedColor.correct) {
       setScore((score) => score + 1);
 
-      const [correctColor, wrongColor] = COLORS.slice().sort();
+      if (score === 9) {
+        setStatus("finished");
+      } else {
+        const [correctColor, wrongColor] = COLORS.slice().sort();
 
-      setGameColors([{...correctColor, correct: true}, wrongColor].sort(() => Math.random() - 0.5));
+        setGameColors(
+          [{...correctColor, correct: true}, wrongColor].sort(() => Math.random() - 0.5),
+        );
+      }
     }
   }
 
@@ -75,8 +81,8 @@ function App() {
 
   return (
     <main>
-      <header>
-        <h1>{0} puntos</h1>
+      <header style={{backgroundColor: "#333"}}>
+        <h1>{score} puntos</h1>
         <h1>{time} segundos</h1>
       </header>
       {status === "playing" && (
